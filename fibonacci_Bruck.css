@@ -1,0 +1,57 @@
+.title {
+  font-size: 72px;
+  line-height: 79px;
+  margin-left: 164px;
+  margin-top: 100px;
+}
+.calculation {
+  font-size: 24px;
+  line-height: 24px;
+  margin-left: 164px;
+  margin-top: 57px;
+}
+.title,
+.calculation {
+  display: flex;
+  align-items: flex-end;
+  color: #373a3c;
+  font-family: open sans;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.fibBox {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 38px;
+  width: 86px;
+  margin-left: 14px;
+}
+.fibBoxSearch {
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 38px;
+  width: 39px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: #ffffff;
+  margin-left: 16px;
+}
+
+.fibSolution {
+  font-size: 24px;
+  line-height: 24px;
+  display: inline-block;
+  align-items: flex-end;
+  text-decoration-line: underline;
+  color: #373a3c;
+  margin-left: 14px;
+}
