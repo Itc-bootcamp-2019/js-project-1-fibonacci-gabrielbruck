@@ -35,13 +35,27 @@
 //   return result;
 // }
 
-// Milestone 4.1
+// // Milestone 4.1
 
-function fib(x) {
-  if (x <= 2) return 1;
-  return fib(x - 1) + fib(x - 2);
-}
+// function fib(x) {
+//   if (x <= 2) return 1;
+//   return fib(x - 1) + fib(x - 2);
+// }
+// function myFunction() {
+//   var x = document.getElementById("myText").value;
+//   document.getElementById("demo").innerHTML = fib(x);
+// }
+
+// Mileston 5
+
 function myFunction() {
-  var x = document.getElementById("myText").value;
-  document.getElementById("demo").innerHTML = fib(x);
+  let x = document.getElementById("myText").value;
+
+  fetch(`http://localhost:5050/fibonacci/${x}`)
+    .then(res => res.json())
+    .then(function(data) {
+      let y = data.result;
+      document.getElementById("demo").innerHTML = y;
+      console.log(y);
+    });
 }
