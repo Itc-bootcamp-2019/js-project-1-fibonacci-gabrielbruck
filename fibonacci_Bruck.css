@@ -1,14 +1,22 @@
+* {
+  font-family: open sans;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
 .title {
   font-size: 72px;
   line-height: 79px;
-  margin-left: 164px;
+  display: flex;
+  align-items: flex-end;
+  color: #373a3c;
   margin-top: 100px;
 }
 .calculation {
   font-size: 24px;
   line-height: 24px;
-  margin-left: 164px;
-  margin-top: 57px;
+  display: block;
+  margin-top: 40px;
 }
 .title,
 .calculation {
@@ -23,7 +31,6 @@
 .fibBox {
   background: #ffffff;
   border: 1px solid #cccccc;
-  box-sizing: border-box;
   border-radius: 4px;
   height: 38px;
   width: 86px;
@@ -36,9 +43,6 @@
   border-radius: 4px;
   height: 38px;
   width: 39px;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 21px;
   text-align: center;
@@ -46,34 +50,23 @@
   margin-left: 16px;
 }
 
-.fibSolution {
+.result {
   font-size: 24px;
   line-height: 24px;
   display: inline-block;
-  align-items: flex-end;
+  font-weight: bold;
   text-decoration-line: underline;
   color: #373a3c;
   margin-left: 14px;
 }
 
-.loader {
-  border-radius: 50%;
-  border: 3px solid black;
-  border-top: 4px solid white;
-  width: 35px;
-  height: 35px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
-
-/* Safari */
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+.spinner {
+  border-radius: 50% !important;
+  border: 3px solid black !important;
+  border-top: 4px solid white !important;
+  width: 35px !important;
+  height: 35px !important;
+  animation: spin 2s linear infinite !important;
 }
 
 @keyframes spin {
@@ -83,4 +76,44 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.hide {
+  display: none;
+}
+
+.ErrorBox {
+  position: relative;
+  width: 180px;
+  height: 33px;
+  background: #f2dede;
+  border: 1px solid #ebcccc;
+  border-radius: 4px;
+  left: 115px;
+  margin-top: 15px;
+  vertical-align: middle;
+  align-items: center;
+  text-align: left;
+}
+
+.ErrorBoxText {
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 24px;
+  line-height: 110%;
+  color: #a94442;
+  margin-top: 8px;
+  margin-left: 5px;
+}
+.FortyTwoError {
+  width: 277px;
+  height: 24px;
+  left: 525px;
+  top: 236px;
+  font-size: 16px;
+  color: #d9534f;
+}
+
+.show {
+  display: inline-block;
 }

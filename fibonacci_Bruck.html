@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fibonacci</title>
+    <title>fibonacci_final</title>
     <link rel="stylesheet" href="fibonacci_Bruck.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
@@ -17,24 +17,41 @@
     />
   </head>
   <body>
-    <h1 class="title">
-      Fibonacci Calculator
-    </h1>
-    <div>
-      <p class="calculation">
-        The Fibonacci of
-        <input
-          type="text"
-          id="myText"
-          class="fibBox"
-          placeholder="#"
-          value=" "
-        />
-        <button onclick="myFunction()" class="fibBoxSearch">is</button>
-  <div class="loader"></div>
-        <span id="demo" class="fibSolution"></span>
-      </p>
-      <script src="fibonacci_Bruck.js"></script>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-md-10">
+        <h1 class="title fibo">
+          Fibonacci Calculator
+        </h1>
+        <div>
+          <div>
+            <label class="calculation sentence">
+              The Fibonacci of
+              <input
+                type="text"
+                id="number"
+                class="fibBox"
+                placeholder="#"
+                value=" "/>
+              <button
+                id="isBtn"
+                type="button"
+                class="btn btn-primary thebtn fibBoxSearch"
+              >
+                Is
+              </button>
+
+              <span id="result" class="demo fibSolution result "></span>
+              <span class="spinner hide" id="loader"></span>
+              <span id="FortyTwoError" class="FortyTwoError"></span
+            ></label>
+            <div class="hide ErrorBox" id="ErrorBox">
+              <div class="ErrorBoxText" id="ErrorBoxText"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="fibonacci_Bruck.js"></script>
   </body>
 </html>
