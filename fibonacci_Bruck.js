@@ -1,99 +1,15 @@
-// Milestone 2
-// document.getElementById("x").innerText = "4 ";
-// document.getElementById("y").innerText = "3";
-
-// //Milestone 3
-
-// function fib(x) {
-//   let b = 1;
-//   let c = 0;
-
-//   for (let i = 1; i < x; i++) {
-//     result = b + c;
-//     c = b;
-//     b = result;
-//   }
-//   return result;
-// }
-// x = 8;
-// console.log(fib(x));
-// result - fib(x);
-
-// document.getElementById("myNumber").innerText = [x];
-// document.getElementById("y").innerText = [result];
-
-// // Milestone 4
-// function fib(x) {
-//   let b = 1;
-//   let c = 0;
-
-//   for (let i = 1; i < x; i++) {
-//     result = b + c;
-//     c = b;
-//     b = result;
-//   }
-//   return result;
-// }
-
-// // Milestone 4.1
-
-// function fib(x) {
-//   if (x <= 2) return 1;
-//   return fib(x - 1) + fib(x - 2);
-// }
-// function myFunction() {
-//   var x = document.getElementById("myText").value;
-//   document.getElementById("demo").innerHTML = fib(x);
-// }
-
-// // Mileston 5
-// function goSpinning() {
-//   let spinner = document.getElementById("loader");
-//   spinner.classList.toggle("hidden");
-// }
-// function fibonacci() {
-//   let x = document.getElementById("myText").value;
-//   goSpinning();
-
-//   if (checkData(x) !== "okay") {
-//     return console.log("not a valid number");
-//   }
-//   const url = `http://localhost:5050/fibonacci/${x}`;
-//   fetch(url)
-//     .then(response => {
-//       if (response.status === 400) {
-//         return response.text();
-//       } else {
-//         return response.json();
-//       }
-//     })
-//     .then(function(data) {
-//       let y = data.result;
-//       document.getElementById("demo2").innerHTML = y;
-//       console.log(y);
-//       goSpinning();
-//       loader.style.visibility = "hidden";
-//     });
-// }
-
-// function checkData(num) {
-//   let alertData = document.getElementById("alertData");
-//   if (num > 50) {
-//     alertData.innerText = "Can't be larger than 50";
-//     alertData.style.display = "block";
-//     return console.log("error");
-//   } else {
-//     return "okay";
-//   }
-// }
-
-// Milestone 6
+// Milestone 8
+//functions to hide/ unhide
 function goSpinning() {
   let spinner = document.getElementById("loader");
   spinner.classList.replace("hide", "show");
   setTimeout(() => {
     spinner.classList.replace("show", "hide");
   }, 2000);
+}
+function goSpinning2() {
+  let spinner2 = document.getElementById("loader2");
+  spinner2.classList.add("hide");
 }
 function goHidden() {
   let hiddenResult = document.getElementById("result");
@@ -112,6 +28,17 @@ function goFifty() {
   hiddenResult1.classList.add("hide");
 }
 
+//Save Checkbox
+function saving() {
+  let checkbox = document.getElementById("myCheck");
+  if (checkbox.checked == true) {
+    goFetch();
+  } else {
+    fib();
+  }
+}
+
+// Extracting Fibonacci though the server
 function goFetch() {
   document.getElementById("FortyTwoError").innerText = "";
   goFifty();
@@ -150,4 +77,54 @@ function goFetch() {
     }, 2000);
   }
 }
-document.getElementById("isBtn").addEventListener("click", goFetch);
+document.getElementById("isBtn").addEventListener("click", saving);
+
+// Extracting Fibonacci  locally
+function fib() {
+  goFifty();
+  goUnHidden();
+  let x = document.getElementById("number").value;
+  if (x > 50) {
+    let ErrorFifty = document.getElementById("ErrorBoxText");
+    ErrorFifty.innerText = "Can't be larger than 50";
+    goUnFifty();
+    goHidden();
+  } else {
+    let b = 1;
+    let c = 0;
+
+    for (let i = 1; i < x; i++) {
+      result = b + c;
+      c = b;
+      b = result;
+    }
+    document.getElementById("result").innerText = result;
+  }
+}
+fetch(`http://localhost:5050/getFibonacciResults`).then(response => {
+  response.json().then(function(data) {
+    const results = data.results;
+    goSpinning2();
+    showResults(results);
+  });
+});
+
+function showResults(array) {
+  for (i = 0; i < array.length; i++) {
+    let resultDate = new Date(array[i].createdDate);
+    let mydiv = document.getElementById("dataArray");
+    let paragraph = document.createElement("p");
+    paragraph.classList.add("bottomLine");
+    paragraph.innerHTML +=
+      "The Fibonnaci of <b>" +
+      " " +
+      array[i].number +
+      " " +
+      "</b> is <b>" +
+      array[i].result +
+      " " +
+      "</b> calculated at : " +
+      resultDate;
+    mydiv.appendChild(paragraph);
+  }
+}

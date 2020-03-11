@@ -21,7 +21,7 @@
 .title,
 .calculation {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   color: #373a3c;
   font-family: open sans;
   font-style: normal;
@@ -60,15 +60,19 @@
   margin-left: 14px;
 }
 
-.spinner {
-  border-radius: 50% !important;
-  border: 3px solid black !important;
-  border-top: 4px solid white !important;
-  width: 35px !important;
-  height: 35px !important;
-  animation: spin 2s linear infinite !important;
+.spinner,
+.spinner2 {
+  margin-left: 10px;
+  border-radius: 50%;
+  border: 3px solid black;
+  border-top: 4px solid white;
+  width: 35px;
+  animation: spin 2s linear infinite;
+  height: 35px;
 }
-
+.spinner2 {
+  display: inline-block;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -106,14 +110,39 @@
   margin-left: 5px;
 }
 .FortyTwoError {
-  width: 277px;
-  height: 24px;
-  left: 525px;
-  top: 236px;
   font-size: 16px;
   color: #d9534f;
+  margin-left: 35px;
+  margin-bottom: 7px;
 }
 
 .show {
   display: inline-block;
+}
+.ResultsCalculator {
+  margin-top: 48px;
+  font-size: 54px;
+  line-height: 72px;
+  color: #373a3c;
+}
+.allResults {
+  margin-top: 60px;
+}
+.bottomLine {
+  border-bottom: 1px solid #000000;
+}
+.saveBox {
+  position: relative;
+  margin-top: 15px;
+}
+.saveText {
+  font-size: 16px;
+  margin-left: 6px;
+  margin-top: 2px;
+  position: absolute;
+}
+.bottomLine {
+  font-size: 24px;
+  line-height: 24px;
+  color: #373a3c;
 }
