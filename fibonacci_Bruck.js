@@ -2,10 +2,11 @@
 //functions to hide/ unhide
 function goSpinning() {
   let spinner = document.getElementById("loader");
-  spinner.classList.replace("hide", "show");
-  setTimeout(() => {
-    spinner.classList.replace("show", "hide");
-  }, 2000);
+  spinner.classList.remove("hide");
+}
+function goUnspinning() {
+  let spinner = document.getElementById("loader");
+  spinner.classList.add("hide");
 }
 function goSpinning2() {
   let spinner2 = document.getElementById("loader2");
@@ -55,26 +56,25 @@ function goFetch() {
     const url = `http://localhost:5050/fibonacci/${number}`;
     console.log(url);
 
-    setTimeout(() => {
-      fetch(url)
-        .then(response => {
-          if (response.status === 400) {
-            return response.text();
-          } else {
-            return response.json();
-          }
-        })
-        .then(data => {
-          if (typeof data === "object") {
-            console.log(data.result);
-            document.getElementById("result").innerText = data.result;
-            goUnHidden();
-          } else {
-            document.getElementById("FortyTwoError").innerText =
-              "Server Error: " + " " + data;
-          }
-        });
-    }, 2000);
+    fetch(url)
+      .then(response => {
+        if (response.status === 400) {
+          return response.text();
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        if (typeof data === "object") {
+          console.log(data.result);
+          document.getElementById("result").innerText = data.result;
+          goUnHidden();
+        } else {
+          document.getElementById("FortyTwoError").innerText =
+            "Server Error: " + " " + data;
+        }
+        goUnspinning();
+      });
   }
 }
 document.getElementById("isBtn").addEventListener("click", saving);
